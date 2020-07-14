@@ -1,0 +1,54 @@
+# work flow name user-profile
+
+name: "user-profile"
+# workflow run on pull or push to master
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches:
+      - master
+
+# jobs to run on sequentially or parallel
+jobs:
+
+# setup node environment
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: actions/setup-node@v2
+        with:
+          node-version: 12
+          check-latest: true
+      - run npm install
+
+# unit test
+  units:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - run: npm ci
+    - run: npm test
+
+# test case
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: action/checkout@v1
+    - run: ./
+      with:
+        milliseconds: 1000
+
+# eslint
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/checkout@v2
+      - run: npm run lint
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/checkout/@v2
+      - run: npm build
