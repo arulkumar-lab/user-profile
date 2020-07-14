@@ -27,18 +27,18 @@ jobs:
   units:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - run: npm ci
     - run: npm test
 
 # test case
-  test:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: action/checkout@v1
-    - run: ./
-      with:
-        milliseconds: 1000
+#  test:
+#    runs-on: ubuntu-latest
+#    steps:
+#    - uses: action/checkout@v2
+#    - run: ./
+#      with:
+#        milliseconds: 1000
 
 # eslint
   eslint:
