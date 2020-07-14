@@ -16,12 +16,12 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: actions/setup-node@v2
-        with:
-          node-version: '12'
-          check-latest: true
-      - run: npm install
+    - uses: actions/checkout@v2
+    - run: actions/setup-node@v2
+      with:
+        node-version: '12'
+        check-latest: true
+    - run: npm install
 
 # unit test
   units:
@@ -44,11 +44,11 @@ jobs:
   eslint:
     runs-on: ubuntu-latest
     steps:
-      - uses: action/checkout@v2
-      - run: npm run lint
+    - uses: action/checkout@v2
+    - run: npm run lint
 
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: action/checkout/@v2
-      - run: npm build
+    - uses: action/checkout/@v2
+    - run: npm build
